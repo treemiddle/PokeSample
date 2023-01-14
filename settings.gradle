@@ -13,4 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "PokeSample"
-include ':app'
+include(":app")
+include(":core-model")
