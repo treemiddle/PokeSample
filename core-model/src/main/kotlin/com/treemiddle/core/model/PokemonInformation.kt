@@ -27,6 +27,6 @@ data class PokemonInformation(
         private const val maxAttack = 300
         private const val maxDefense = 300
         private const val maxSpeed = 300
-        private const val maxExp = 500
+        private const val maxExp = 1000
     }
 }
