@@ -7,16 +7,23 @@ junit = "4.13.2"
 androidxTestJunit = "1.1.5"
 espresso = "3.5.1"
 
+hilt = "2.44"
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
 [libraries]
-material = { module = "com.google.android.material:material", version.ref = "material"}
+material = { module = "com.google.android.material:material", version.ref = "material" }
 
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTestJunit" }
 androidx-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt"}
+hilt-comipler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt"}
 
 # unit test
 junit = { module = "junit:junit", version.ref = "junit" }

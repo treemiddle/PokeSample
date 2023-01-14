@@ -11,14 +11,6 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-//    dependencyResolutionManagement {
-//        versionCatalogs {
-//            deps {
-//                from(files("gradle/libs.versions.toml"))
-//            }
-//            // from(files("gradle/libs.versions.toml"))
-//        }
-//    }
 }
 rootProject.name = "PokeSample"
 include(":app")

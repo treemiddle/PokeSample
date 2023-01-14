@@ -1,8 +1,8 @@
 import com.treemiddle.buildsrc.AndroidConfiguration
 
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    id(libs.plugins.android.application.get().pluginId)
+    id(libs.plugins.kotlin.android.get().pluginId)
 }
 
 android {
