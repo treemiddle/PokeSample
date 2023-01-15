@@ -15,7 +15,7 @@ class MainRepositoryImpl @Inject constructor(
     private val networkDataSource: NetworkDataSource,
     @Dispatcher(NetworkDispatchers.IO) private val ioDispatcher: CoroutineDispatcher
 ) : MainRepository {
-    override suspend fun fetchPokemonList(limit: Int, offset: Int): Flow<List<Pokemon>> = flow {
+    override fun fetchPokemonList(limit: Int, offset: Int): Flow<List<Pokemon>> = flow {
         val pokemonList = networkDataSource.fetchPokemonList(limit, offset).results
         if (pokemonList.isNotEmpty()) {
             emit(pokemonList)

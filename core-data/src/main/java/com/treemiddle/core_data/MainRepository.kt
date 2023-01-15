@@ -4,7 +4,7 @@ import com.treemiddle.core.model.Pokemon
 import kotlinx.coroutines.flow.Flow
 
 interface MainRepository {
-    suspend fun fetchPokemonList(
+    fun fetchPokemonList(
         limit: Int,
         offset: Int
     ): Flow<List<Pokemon>>
