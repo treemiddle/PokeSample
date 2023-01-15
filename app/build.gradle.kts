@@ -31,11 +31,27 @@ android {
     kotlinOptions {
         jvmTarget = AndroidConfiguration.JVM_TARGET_VERSION
     }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
 }
 
 dependencies {
+    implementation(project(":feature-main"))
+
     // androidx
     implementation(libs.material)
+    implementation(libs.compose.material)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+
+    // compose
+    implementation(libs.compose.ui)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // unit test
     testImplementation(libs.junit)
