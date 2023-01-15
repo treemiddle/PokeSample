@@ -15,12 +15,11 @@ class MainRepositoryImpl @Inject constructor(
     private val networkDataSource: NetworkDataSource,
     @Dispatcher(NetworkDispatchers.IO) private val ioDispatcher: CoroutineDispatcher
 ) : MainRepository {
-    override fun fetchPokemonList(limit: Int, offset: Int): Flow<List<Pokemon>> = flow {
-        val pokemonList = networkDataSource.fetchPokemonList(limit, offset).results
-        if (pokemonList.isNotEmpty()) {
-            emit(pokemonList)
-        } else {
-            emit(emptyList())
-        }
-    }.flowOn(ioDispatcher)
+    override suspend fun fetchPokemonList(limit: Int, offset: Int): List<Pokemon> {
+        return networkDataSource.fetchPokemonList(limit, offset).results
+    }
+//        val pokemonList = networkDataSource.fetchPokemonList(limit, offset).results
+//        emit(pokemonList)
+//    }
+//        .flowOn(ioDispatcher)
 }

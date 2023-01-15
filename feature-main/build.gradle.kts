@@ -38,6 +38,7 @@ dependencies {
 
     // compose
     implementation(libs.compose.ui)
+    implementation(libs.lifecycle.compose)
 
     // hilt
     implementation(libs.hilt.android)

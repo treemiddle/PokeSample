@@ -12,7 +12,9 @@ import androidx.navigation.compose.rememberNavController
 import com.treemiddle.feature_main.navigation.mainRoute
 import com.treemiddle.feature_main.navigation.onMainRoute
 import com.treemiddle.pokesample.theme.PokemonAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

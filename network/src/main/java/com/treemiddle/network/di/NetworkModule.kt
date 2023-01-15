@@ -1,14 +1,15 @@
 package com.treemiddle.network.di
 
+import com.treemiddle.network.BuildConfig
 import com.treemiddle.network.NetworkConstants
 import com.treemiddle.network.interceptor.PokeRequestInterceptor
 import com.treemiddle.network.service.PokeService
-import com.treemiddle.network.service.PokeServiceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -20,8 +21,21 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient =
         OkHttpClient.Builder()
-            .addInterceptor(PokeRequestInterceptor())
+            .addInterceptor(provideHttpLogging())
+            //.addInterceptor(PokeRequestInterceptor())
             .build()
+
+    @Provides
+    @Singleton
+    fun provideHttpLogging(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().apply {
+            level = if (BuildConfig.DEBUG) {
+                HttpLoggingInterceptor.Level.BODY
+            } else {
+                HttpLoggingInterceptor.Level.NONE
+            }
+        }
+    }
 
     @Provides
     @Singleton
@@ -36,9 +50,4 @@ object NetworkModule {
     @Singleton
     fun providePokeService(retrofit: Retrofit): PokeService =
         retrofit.create(PokeService::class.java)
-
-    @Provides
-    @Singleton
-    fun providePokeServiceImpl(pokeService: PokeService): PokeServiceImpl =
-        PokeServiceImpl(pokeService)
 }
