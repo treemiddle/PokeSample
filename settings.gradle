@@ -16,3 +16,4 @@ rootProject.name = "PokeSample"
 include(":app")
 include(":core-model")
 include(":network")
+include(":core-data")
